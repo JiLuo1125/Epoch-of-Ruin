@@ -104,31 +104,36 @@ namespace JUTPS.FX
         private static Shaker currentCameraInstance;
         public static Shaker GetCurrentCameraInstance()
         {
-            if (currentCameraInstance == null)
+            if (currentCameraInstance != null && currentCameraInstance.isActiveAndEnabled)
             {
-                if (Camera.current != null)
-                {
-                    currentCameraInstance = Camera.current.GetComponent<Shaker>();
-                    return currentCameraInstance;
-                }
-                else
-                {
-                    Debug.LogWarning("Camera Current no found");
-                    return null;
-                }
+                return currentCameraInstance;
             }
-            else
+
+            if (TrySetCurrentCameraInstance(Camera.current))
             {
-                if (Camera.current != null && Camera.current != currentCameraInstance.GetComponent<Camera>())
-                {
-                    currentCameraInstance = Camera.current.GetComponent<Shaker>();
-                    return currentCameraInstance;
-                }
-                else
-                {
-                    return currentCameraInstance;
-                }
+                return currentCameraInstance;
             }
+
+            if (TrySetCurrentCameraInstance(Camera.main))
+            {
+                return currentCameraInstance;
+            }
+
+            currentCameraInstance = FindObjectOfType<Shaker>();
+            return currentCameraInstance;
+        }
+
+        private static bool TrySetCurrentCameraInstance(Camera camera)
+        {
+            if (camera == null) return false;
+
+            Shaker shaker = camera.GetComponent<Shaker>();
+            if (shaker == null) shaker = camera.GetComponentInParent<Shaker>();
+            if (shaker == null) shaker = camera.GetComponentInChildren<Shaker>();
+            if (shaker == null) return false;
+
+            currentCameraInstance = shaker;
+            return true;
         }
 
         /// <summary>

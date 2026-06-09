@@ -8186,7 +8186,7 @@ MonoBehaviour:
   IsPlayer: 1
   UseOldInputSystem: 0
   JuTPSCharacter: {fileID: 0}
-  ItemToEquipOnStart: -1
+  ItemToEquipOnStart: 0
   EnableNextAndPreviousWeaponSwitch: 1
   CustomNextWeaponKeyCode: 0
   CustomPreviousWeaponKeycode: 0
@@ -8788,10 +8788,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488f7c24132cdf1418b0255398c8c3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CapsuleToResize: {fileID: 0}
+  CapsuleToResize: {fileID: 6691749915687825788}
   HeightOffset: 1
   ProneAndRollCenterY: 0.38
   CenterOffset: {x: 0, y: 0, z: 0}
+  OverrideRadius: 1
+  StandingRadius: 0.3
+  ProneAndRollRadius: 0.24
 --- !u!1 &5903174841725345769
 GameObject:
   m_ObjectHideFlags: 0

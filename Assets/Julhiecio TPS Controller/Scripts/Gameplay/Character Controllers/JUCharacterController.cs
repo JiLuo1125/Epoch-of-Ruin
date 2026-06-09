@@ -250,8 +250,21 @@ namespace JUTPS
             //Disable Aiming if isnt in Fire Mode
             if (!FiringMode) IsAiming = false;
 
-            //Block firemod if cursor isnot visible
-            if (Cursor.visible == true && JUGameManager.IsMobile == false && BlockFireModeOnCursorVisible) { return; }
+            // Keep cursor-visible UI states from entering fire mode, but don't swallow an explicit shot/aim input.
+            if (Cursor.visible == true && JUGameManager.IsMobile == false && BlockFireModeOnCursorVisible && ShotInput == false && AimInput == false) { return; }
+
+            if ((ShotInput || AimInput) && FiringMode == false && IsRolling == false && IsDriving == false && IsReloading == false && LocomotionMode != MovementMode.JuTpsClassic)
+            {
+                if ((BlockFireModeOnPunching && IsPunching) == false)
+                {
+                    FiringModeIK = true;
+                    FiringMode = true;
+                }
+            }
+            if (ShotInputDown && FiringModeIK && ArmsWeightIK < 0.45f)
+            {
+                ArmsWeightIK = 0.45f;
+            }
 
             //All Items Using. Tags: Weapon, Melee, Gun, Shot, Reload, Aim
             if (Inventory != null)
@@ -261,15 +274,6 @@ namespace JUTPS
             else
             {
                 DefaultUseOfAllItems(ShotInput, ShotInputDown, ReloadInput, AimInput, AimInputDown, EnablePunchAttacks ? ShotInputDown : false);
-            }
-            // >>> Firing Mode Trigger
-            if ((ShotInput || AimInput) && FiringMode == false && IsRolling == false && IsDriving == false && IsReloading == false && LocomotionMode != MovementMode.JuTpsClassic)
-            {
-                if ((BlockFireModeOnPunching && IsPunching) == false)
-                {
-                    FiringModeIK = true;
-                    FiringMode = true;
-                }
             }
             if (BlockFireModeOnPunching && (IsPunching || !IsItemEquiped))
             {

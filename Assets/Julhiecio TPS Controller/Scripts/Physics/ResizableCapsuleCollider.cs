@@ -15,9 +15,14 @@ namespace JUTPS.PhysicsScripts
         public float HeightOffset = 0.73f;
         public float ProneAndRollCenterY = 0.38f; 
         public Vector3 CenterOffset;
+        [Header("Narrow Passage Clearance")]
+        public bool OverrideRadius = false;
+        [Range(0.1f, 0.5f)] public float StandingRadius = 0.28f;
+        [Range(0.1f, 0.5f)] public float ProneAndRollRadius = 0.22f;
 
         private float StartHeight;
         private Vector3 StartCenter;
+        private float StartRadius;
 
         private Transform rightFoot, leftFoot, head;
         void Start()
@@ -26,6 +31,7 @@ namespace JUTPS.PhysicsScripts
 
             StartHeight = CapsuleToResize.height;
             StartCenter = CapsuleToResize.center;
+            StartRadius = CapsuleToResize.radius;
 
             Invoke(nameof(GetFeetReferences), 0.01f);
         }
@@ -41,6 +47,7 @@ namespace JUTPS.PhysicsScripts
                 CapsuleToResize.direction = 2;
                 CapsuleToResize.height = HeadFeetDistance() * StartHeight * HeightOffset;
                 CapsuleToResize.center = new Vector3(0, ProneAndRollCenterY, 0);
+                ApplyRadius(ProneAndRollRadius);
             }
             else
             {
@@ -57,9 +64,15 @@ namespace JUTPS.PhysicsScripts
 
 
                 CapsuleToResize.direction = 1;
+                ApplyRadius(StandingRadius);
             }
 
         }
+        private void ApplyRadius(float targetRadius)
+        {
+            CapsuleToResize.radius = OverrideRadius ? targetRadius : StartRadius;
+        }
+
         public float HeadFeetDistance() { return Vector3.Distance(head.position, GetMiddlePointBetweenFeets()); }
         private void GetFeetReferences()
         {

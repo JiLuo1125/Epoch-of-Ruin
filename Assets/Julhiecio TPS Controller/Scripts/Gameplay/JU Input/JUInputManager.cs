@@ -17,6 +17,7 @@ namespace JUTPS.JUInputSystem
 		public JUTPSInputControlls InputActions;
 
 		private bool BlockStandardInputs;
+		private bool InputUpListenersAdded;
 		public bool IsBlockingDefaultInputs { get => BlockStandardInputs; }
 
 
@@ -61,14 +62,53 @@ namespace JUTPS.JUInputSystem
 		public CustomInputButton[] CustomButton;
 
 		public static bool IsUsingGamepad;
-		private void Update()
+		private void Awake()
+		{
+			EnsureInputActions();
+		}
+
+		private void OnEnable()
+		{
+			EnsureInputActions();
+		}
+
+		private void OnDisable()
+		{
+			if (InputActions != null)
+			{
+				InputActions.Disable();
+			}
+		}
+
+		private void OnDestroy()
+		{
+			if (InputActions != null)
+			{
+				InputActions.Dispose();
+				InputActions = null;
+				InputUpListenersAdded = false;
+			}
+		}
+
+		private void EnsureInputActions()
 		{
 			if (InputActions == null)
 			{
 				InputActions = new JUTPSInputControlls();
-				InputActions.Enable();
-				AddInputUpListeners(InputActions.Player);
 			}
+
+			if (InputUpListenersAdded == false)
+			{
+				AddInputUpListeners(InputActions.Player);
+				InputUpListenersAdded = true;
+			}
+
+			InputActions.Enable();
+		}
+
+		private void Update()
+		{
+			EnsureInputActions();
 
 			if (BlockStandardInputs) return;
 
@@ -132,6 +172,22 @@ namespace JUTPS.JUInputSystem
 
 			input.Previous.performed += ctx => { PressedPreviousItemUp = false; };
 			input.Previous.canceled += ctx => { PressedPreviousItemUp = true; };
+		}
+		private bool IsMouseLeftButtonPressed()
+		{
+			return Mouse.current != null && Mouse.current.leftButton.isPressed;
+		}
+		private bool WasMouseLeftButtonPressedThisFrame()
+		{
+			return Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame;
+		}
+		private bool IsMouseRightButtonPressed()
+		{
+			return Mouse.current != null && Mouse.current.rightButton.isPressed;
+		}
+		private bool WasMouseRightButtonPressedThisFrame()
+		{
+			return Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame;
 		}
 		protected virtual void UpdateAxis()
 		{
@@ -208,8 +264,8 @@ namespace JUTPS.JUInputSystem
 			PressedProneDown = InputActions.Player.Prone.triggered;
 			PressedCrouchDown = InputActions.Player.Crouch.triggered;
 
-			PressedShootingDown = InputActions.Player.Fire.triggered;
-			PressedAimingDown = InputActions.Player.Aim.triggered;
+			PressedShootingDown = InputActions.Player.Fire.triggered || WasMouseLeftButtonPressedThisFrame();
+			PressedAimingDown = InputActions.Player.Aim.triggered || WasMouseRightButtonPressedThisFrame();
 			PressedReloadDown = InputActions.Player.Reload.triggered;
 
 			PressedPickupDown = InputActions.Player.Pickup.triggered;
@@ -340,8 +396,8 @@ namespace JUTPS.JUInputSystem
 			PressedProne = InputActions.Player.Prone.ReadValue<float>() == 1;
 			PressedCrouch = InputActions.Player.Crouch.ReadValue<float>() == 1;
 
-			PressedShooting = InputActions.Player.Fire.ReadValue<float>() == 1;
-			PressedAiming = InputActions.Player.Aim.ReadValue<float>() == 1;
+			PressedShooting = InputActions.Player.Fire.ReadValue<float>() > 0.5f || IsMouseLeftButtonPressed();
+			PressedAiming = InputActions.Player.Aim.ReadValue<float>() > 0.5f || IsMouseRightButtonPressed();
 			PressedReload = InputActions.Player.Reload.ReadValue<float>() == 1;
 
 			PressedPickup = InputActions.Player.Pickup.ReadValue<float>() == 1;

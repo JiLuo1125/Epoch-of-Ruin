@@ -58,8 +58,14 @@ namespace JUTPS.AnimatorStateMachineBehaviours
         }
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (Controller == null) return;
+
             if (Controller.MeleeWeaponInUseRightHand) { Controller.MeleeWeaponInUseRightHand.StopUseItem(); }
             if (Controller.MeleeWeaponInUseLeftHand) { Controller.MeleeWeaponInUseLeftHand.StopUseItem(); }
+
+            UsingMeleeWeapon = false;
+            Controller.IsMeleeAttacking = false;
+            Controller.CanMove = true;
         }
     }
 }

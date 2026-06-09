@@ -1017,6 +1017,12 @@ namespace JUTPS.CharacterBrain
         }
         protected virtual void WallAHeadCheck()
         {
+            if (!IsGrounded)
+            {
+                WallAHead = false;
+                return;
+            }
+
             //Wall in front
             RaycastHit HitFront;
             if (Physics.Raycast(transform.position + transform.up * WallRayHeight, DirectionTransform.forward, out HitFront, WallRayDistance, WhatIsWall))
@@ -1307,8 +1313,9 @@ namespace JUTPS.CharacterBrain
             if (HoldableItemInUseLeftHand != null) { if ((HoldableItemInUseLeftHand is MeleeWeapon) == false) return; }
 
 
-            IsMeleeAttacking = (MeleeWeaponInUseLeftHand != null) ? MeleeWeaponInUseLeftHand.IsUsingItem : false;
-            IsMeleeAttacking = (MeleeWeaponInUseRightHand != null) ? MeleeWeaponInUseRightHand.IsUsingItem : false;
+            bool leftMeleeAttacking = MeleeWeaponInUseLeftHand != null && MeleeWeaponInUseLeftHand.IsUsingItem;
+            bool rightMeleeAttacking = MeleeWeaponInUseRightHand != null && MeleeWeaponInUseRightHand.IsUsingItem;
+            IsMeleeAttacking = leftMeleeAttacking || rightMeleeAttacking;
 
 
             if (AttackInputDown)
@@ -1622,6 +1629,13 @@ namespace JUTPS.CharacterBrain
             {
                 rb.AddForce(DirectionTransform.forward * LastVelMult * rb.mass * Speed, ForceMode.Impulse);
                 VelocityMultiplier = 0;
+            }
+            else if ((Mathf.Abs(HorizontalX) > 0.01f || Mathf.Abs(VerticalY) > 0.01f) && WallAHead)
+            {
+                Vector3 inputDirection = new Vector3(HorizontalX, 0, VerticalY).normalized;
+                Vector3 cameraDirection = GetForwardOrientation() * inputDirection;
+                cameraDirection = Vector3.ProjectOnPlane(cameraDirection, transform.up).normalized;
+                rb.AddForce(cameraDirection * AirInfluenceControll * rb.mass * Speed, ForceMode.Impulse);
             }
 
             //Disable IsJumping state in 0.3s

@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0.00000030164367, y: 0.70710677, z: -0.7071068, w: 0.00000032782552}
   m_LocalPosition: {x: 0, y: -0.055147648, z: 0.158}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2587229461888056625}
   m_RootOrder: 0
@@ -51,6 +52,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -112,6 +114,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 120401854661773024}
   - {fileID: 8633021753928778762}
@@ -235,7 +238,7 @@ MonoBehaviour:
   Unlocked: 1
   ItemQuantity: 1
   MaxItemQuantity: 1
-  ItemName: M82
+  ItemName: "M82\u72D9\u51FB\u67AA"
   ItemSwitchID: 0
   Owner: {fileID: 0}
   TPSOwner: {fileID: 0}
@@ -345,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToUpDirectionWieldingID: 5
   RayDistance: 0.9
-  BlockFireModeOnPreventClipping: 1
+  BlockGunFireOnPreventClipping: 1
   WallsLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -384,6 +387,7 @@ Transform:
   m_LocalRotation: {x: 0.00000030164367, y: 0.70710677, z: -0.7071068, w: 0.00000032782552}
   m_LocalPosition: {x: 0, y: 0, z: 0.3833146}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2587229461888056625}
   m_RootOrder: 1
@@ -407,6 +411,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -463,6 +468,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.07210004, z: 1.1227999}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2587229461888056625}
   m_RootOrder: 3
@@ -493,6 +499,7 @@ Transform:
   m_LocalRotation: {x: 0.46881315, y: -0.045109294, z: 0.85590583, w: 0.2135524}
   m_LocalPosition: {x: -0.14463952, y: 0.06877552, z: 0.2999438}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2587229461888056625}
   m_RootOrder: 5

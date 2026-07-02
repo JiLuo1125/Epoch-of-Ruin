@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4066739867506401036}
   - {fileID: 3872773628310701935}
@@ -164,7 +165,7 @@ MonoBehaviour:
   Unlocked: 1
   ItemQuantity: 1
   MaxItemQuantity: 1
-  ItemName: Benelli M4
+  ItemName: "M4\u9730\u5F39\u67AA"
   ItemSwitchID: 0
   Owner: {fileID: 0}
   TPSOwner: {fileID: 0}
@@ -261,7 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToUpDirectionWieldingID: 5
   RayDistance: 0.8
-  BlockFireModeOnPreventClipping: 1
+  BlockGunFireOnPreventClipping: 1
   WallsLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -298,6 +299,7 @@ Transform:
   m_LocalRotation: {x: 0.63389814, y: -0.07776068, z: 0.76377237, w: 0.093692474}
   m_LocalPosition: {x: -0.1164093, y: 0.043829918, z: 0.2677765}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 128255432429760125}
   m_RootOrder: 2
@@ -328,6 +330,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.08934736, z: 0.72776985}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 128255432429760125}
   m_RootOrder: 1

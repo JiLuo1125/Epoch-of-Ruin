@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: -3.0199906e-14, y: 1, z: 0.00000008146034, w: -0.00000037252903}
   m_LocalPosition: {x: 0, y: -0.037911713, z: -0.078956604}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5181950147406616974}
   m_RootOrder: 2
@@ -51,6 +52,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -109,6 +111,7 @@ Transform:
   m_LocalRotation: {x: -3.0199906e-14, y: 1, z: 0.00000008146034, w: -0.00000037252903}
   m_LocalPosition: {x: 0, y: 0, z: -0.06162262}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5181950147406616974}
   m_RootOrder: 0
@@ -132,6 +135,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -192,6 +196,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1045125114881590940}
   - {fileID: 3890114402312792970}
@@ -345,7 +350,7 @@ MonoBehaviour:
   Unlocked: 1
   ItemQuantity: 1
   MaxItemQuantity: 1
-  ItemName: P226 Dual
+  ItemName: "P226 \u53CC\u67AA"
   ItemSwitchID: 0
   Owner: {fileID: 0}
   TPSOwner: {fileID: 0}
@@ -377,6 +382,7 @@ MonoBehaviour:
   TotalBullets: 64
   BulletsAmounts: 16
   NumberOfShotgunBulletsPerShot: 12
+  InfiniteAmmo: 0
   Fire_Rate: 0.1
   CurrentFireRateToShoot: 0
   Precision: 25
@@ -439,6 +445,7 @@ Transform:
   m_LocalRotation: {x: -3.0199906e-14, y: 1, z: 0.00000008146034, w: -0.00000037252903}
   m_LocalPosition: {x: 0, y: 0.044852927, z: -0.025039673}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5181950147406616974}
   m_RootOrder: 3
@@ -462,6 +469,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -518,6 +526,7 @@ Transform:
   m_LocalRotation: {x: 0.40403518, y: 0.025930664, z: 0.91435814, w: -0.005693502}
   m_LocalPosition: {x: -0.06927872, y: -0.11645675, z: -0.17569351}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5181950147406616974}
   m_RootOrder: 5
@@ -548,6 +557,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.000000014901161, y: 0.04813218, z: 0.09391405}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5181950147406616974}
   m_RootOrder: 4
@@ -580,6 +590,7 @@ Transform:
   m_LocalRotation: {x: -3.0199906e-14, y: 1, z: 0.00000008146034, w: -0.00000037252903}
   m_LocalPosition: {x: 0, y: -0.0030121058, z: -0.028266907}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5181950147406616974}
   m_RootOrder: 1
@@ -603,6 +614,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -702,15 +714,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79e6602010da4aa4bbf28ad5706d57e5, type: 3}
---- !u!1 &9190804340465824845 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 402290317581203873, guid: 79e6602010da4aa4bbf28ad5706d57e5,
-    type: 3}
-  m_PrefabInstance: {fileID: 8798190013643017708}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5930233000509684089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2906255855059563669, guid: 79e6602010da4aa4bbf28ad5706d57e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8798190013643017708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9190804340465824845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 402290317581203873, guid: 79e6602010da4aa4bbf28ad5706d57e5,
     type: 3}
   m_PrefabInstance: {fileID: 8798190013643017708}
   m_PrefabAsset: {fileID: 0}

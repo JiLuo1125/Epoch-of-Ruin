@@ -42,7 +42,7 @@ namespace JUTPS.InventorySystem.UI
             {
                 Icon.sprite = EmptySprite;
                 BulletLabel.SetActive(false);
-                ItemName.text = "Hand";
+                ItemName.text = "拳头";
                 ItemQuantity.text = "";
                 ItemHealth.fillAmount = 1;
             }
@@ -55,7 +55,7 @@ namespace JUTPS.InventorySystem.UI
                     ItemQuantity.text = CurrentItem.ItemQuantity + "/" + CurrentItem.MaxItemQuantity;
 
                     BulletLabel.SetActive(true);
-                    BulletQuantity.text = ((Weapon)CurrentItem).BulletsAmounts + "/" + ((Weapon)CurrentItem).TotalBullets;
+                    BulletQuantity.text = "弹药: " + ((Weapon)CurrentItem).BulletsAmounts + " / " + ((Weapon)CurrentItem).TotalBullets;
                     ItemHealth.fillAmount = (float)((Weapon)CurrentItem).BulletsAmounts / (float)((Weapon)CurrentItem).BulletsPerMagazine;
                     return;
                 }

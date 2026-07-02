@@ -228,7 +228,7 @@ namespace JUTPS.InventorySystem.UI
                 ItemQuantityText.gameObject.SetActive(true);
                 if (slotItem is Weapon)
                 {
-                    ItemQuantityText.text = (slotItem as Weapon).BulletsAmounts + "/" + (slotItem as Weapon).TotalBullets;
+                    ItemQuantityText.text = "弹药: " + (slotItem as Weapon).BulletsAmounts + " / " + (slotItem as Weapon).TotalBullets;
                 }
                 else
                 {
